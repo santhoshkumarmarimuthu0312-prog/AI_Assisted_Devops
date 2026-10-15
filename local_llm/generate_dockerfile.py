@@ -1,4 +1,4 @@
- import ollama
+import ollama
 
 PROMPT = """
 ONLY Generate an ideal Dockerfile for {language} with best practices. Do not provide any description
@@ -8,10 +8,11 @@ Include:
 - Setting working directory
 - Adding source code
 - Running the application
+- Multi Stage docker file
 """
 
 def generate_dockerfile(language):
-    response = ollama.chat(model='llama3.1:8b', messages=[{'role': 'user', 'content': PROMPT.format(language=language)}])
+    response = ollama.chat(model='llama3.2:latest', messages=[{'role': 'user', 'content': PROMPT.format(language=language)}])
     return response['message']['content']
 
 if __name__ == '__main__':
